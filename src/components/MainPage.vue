@@ -1,3 +1,5 @@
 <template>
-    <h1>sadad</h1>
+    <div class="main-content">
+        <v-btn color="primary"> asdsad </v-btn>
+    </div>
 </template>
