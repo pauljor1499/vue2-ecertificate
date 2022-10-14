@@ -7,8 +7,14 @@
         </div>
 
         <div class="content-workspace">
-            <div class="workspace-header">asdada</div>
-            <div class="workspace-body">dadads</div>
+            <div class="workspace-header">
+                <v-btn color="primary" outlined>
+                    <v-icon>mdi-export</v-icon> Export
+                </v-btn>
+            </div>
+            <div class="workspace-body">
+                <div class="body-canvas"></div>
+            </div>
         </div>
     </div>
 </template>
@@ -63,15 +69,33 @@ export default {
 }
 
 .content-workspace {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     flex: 5;
-    border: 1px solid red;
 }
 
 .workspace-header {
-    border: 1px solid red;
+    width: 100%;
+    padding: 10px 50px 10px 10px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+}
+
+.workspace-header .v-btn {
+    float: right;
 }
 
 .workspace-body {
-    border: 1px solid red;
+    width: 100%;
+    height: 100%;
+    padding: 5%;
+}
+
+.body-canvas {
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    box-shadow: 0px 0px 25px 10px rgba(0, 0, 0, 0.05);
 }
 </style>
