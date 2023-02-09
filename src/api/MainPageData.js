@@ -1,3 +1,6 @@
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
+
 export let MainPageData = [
     {
         templates: [
@@ -32,5 +35,15 @@ export let MainPageData = [
 export class MainPageService {
     getAllTemplates() {
         return MainPageData[0].templates;
+    }
+
+    printToPDF(html) {
+        const doc = new jsPDF("l", "in", [6, 10]);
+        html2canvas(html).then((canvas) => {
+            const width = doc.internal.pageSize.getWidth();
+            const height = doc.internal.pageSize.getHeight();
+            doc.addImage(canvas, "JPEG", 0, 0, width, height);
+            doc.save("sample-export.pdf");
+        });
     }
 }

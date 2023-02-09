@@ -18,13 +18,17 @@
                     />
                 </v-col>
                 <v-col cols="2">
-                    <v-btn color="primary" outlined>
+                    <v-btn color="primary" outlined @click="saveToPDF()">
                         <v-icon>mdi-export</v-icon> Export
                     </v-btn>
                 </v-col>
             </v-row>
             <div class="workspace-body">
-                <div class="body-canvas"></div>
+                <div class="body-canvas">
+                    <div class="canvas-content" ref="toPDF">
+                        <h1>HELLO</h1>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -38,6 +42,13 @@ export default {
         return {
             templates: MainPageService.prototype.getAllTemplates(),
         };
+    },
+
+    methods: {
+        saveToPDF() {
+            const html = this.$refs.toPDF;
+            MainPageService.prototype.printToPDF(html);
+        },
     },
 };
 </script>
@@ -107,5 +118,11 @@ export default {
     height: 100%;
     margin: auto;
     box-shadow: 0px 0px 25px 10px rgba(0, 0, 0, 0.05);
+}
+
+.canvas-content {
+    width: 100%;
+    height: 100%;
+    border: 1px solid red;
 }
 </style>
