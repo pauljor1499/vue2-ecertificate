@@ -5,13 +5,24 @@
                 <img :src="item.photo" alt="" />
             </div>
         </div>
-
         <div class="content-workspace">
-            <div class="workspace-header">
-                <v-btn color="primary" outlined>
-                    <v-icon>mdi-export</v-icon> Export
-                </v-btn>
-            </div>
+            <v-row dense class="workspace-header">
+                <v-col cols="6">
+                    <v-text-field
+                        label="Enter your title here"
+                        solo
+                        flat
+                        dense
+                        outlined
+                        hide-details
+                    />
+                </v-col>
+                <v-col cols="2">
+                    <v-btn color="primary" outlined>
+                        <v-icon>mdi-export</v-icon> Export
+                    </v-btn>
+                </v-col>
+            </v-row>
             <div class="workspace-body">
                 <div class="body-canvas"></div>
             </div>
@@ -78,12 +89,11 @@ export default {
 
 .workspace-header {
     width: 100%;
-    padding: 10px 50px 10px 10px;
+    padding: 1% 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
-}
-
-.workspace-header .v-btn {
-    float: right;
 }
 
 .workspace-body {
