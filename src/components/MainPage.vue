@@ -2,13 +2,18 @@
     <div class="main-content">
         <div class="content-templates">
             <div class="item" v-for="(item, index) in templates" :key="index">
-                <img :src="item.photo" alt="" />
+                <img
+                    :src="item.photo"
+                    alt=""
+                    @click="setBackgroundImage(item.photo)"
+                />
             </div>
         </div>
         <div class="content-workspace">
             <v-row dense class="workspace-header">
                 <v-col cols="6">
                     <v-text-field
+                        v-model="title"
                         label="Enter your title here"
                         solo
                         flat
@@ -26,7 +31,12 @@
             <div class="workspace-body">
                 <div class="body-canvas">
                     <div class="canvas-content" ref="toPDF">
-                        <h1>HELLO</h1>
+                        <img class="background-image" :src="background" />
+                        <div class="text-content">
+                            <div class="content-title">
+                                {{ title }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -41,6 +51,8 @@ export default {
     data() {
         return {
             templates: MainPageService.prototype.getAllTemplates(),
+            title: "Certificate of Completion",
+            background: null,
         };
     },
 
@@ -48,6 +60,10 @@ export default {
         saveToPDF() {
             const html = this.$refs.toPDF;
             MainPageService.prototype.printToPDF(html);
+        },
+
+        setBackgroundImage(background) {
+            this.background = background;
         },
     },
 };
@@ -121,8 +137,36 @@ export default {
 }
 
 .canvas-content {
+    position: relative;
     width: 100%;
     height: 100%;
-    border: 1px solid red;
+}
+
+.background-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.text-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    padding: 5%;
+}
+
+.content-title {
+    width: 80%;
+    margin: auto;
+    font-size: 2.5rem;
+    line-height: 0.9;
+    font-family: "Bitter", serif;
+    text-align: center;
+
+    /* font-family: "Poppins", sans-serif; */
+    /* font-family: "Lobster", cursive; */
 }
 </style>

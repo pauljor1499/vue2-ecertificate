@@ -38,7 +38,7 @@ export class MainPageService {
     }
 
     printToPDF(html) {
-        const doc = new jsPDF("l", "in", [6, 10]);
+        const doc = new jsPDF("l", "in", [6.5, 10]);
         html2canvas(html).then((canvas) => {
             const width = doc.internal.pageSize.getWidth();
             const height = doc.internal.pageSize.getHeight();
